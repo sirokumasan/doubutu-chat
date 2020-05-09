@@ -4,8 +4,8 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-    @message.build_image
-  end
+    @message.images.new
+  end 
 
   def create
     @message = Message.new(message_params)
@@ -20,4 +20,5 @@ class MessagesController < ApplicationController
   private 
   def message_params
     params.require(:message).permit(:content, images_attributes:[:image]).merge(user_id: current_user.id)
+  end
 end
