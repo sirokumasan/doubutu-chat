@@ -1,0 +1,6 @@
+.show
+  .show__image
+    - @message.images.each do |image|
+      = image_tag image.image.url
+  .show__message
+    = @message.content

@@ -24,6 +24,10 @@ class MessagesController < ApplicationController
     end
   end
 
+  def show
+    @message = Message.find(params[:id])
+  end
+
   private 
   def message_params
     params.require(:message).permit(:content, images_attributes: [:image, :id]).merge(user_id: current_user.id)

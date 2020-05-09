@@ -1,0 +1,18 @@
+.post__title {
+  font-size: 30px;
+  text-align: center;
+}
+
+.new-wrapper {
+  width: 500px;
+  height: 500px;
+  background-color: gray;
+  margin: 0 auto;
+  &__main__title {
+    font-size: 20px;
+    text-align: center;
+  } 
+}
+.flexbox {
+  display: none;
+}
