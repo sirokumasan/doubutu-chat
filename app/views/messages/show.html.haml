@@ -7,4 +7,5 @@
   .show__message
     = @message.content
   .show__comment
+  = link_to "削除", message_path(@message.id), method: "delete"
     

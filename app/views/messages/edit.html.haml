@@ -1,0 +1,37 @@
+= render "header"
+
+%p.post__title 編集する
+= form_for @message do |f|
+  .new-wrapper
+    .new-wrapper__main
+      .new-wrapper__main__post
+        #image-box__edit
+          %label{class: "flexbox", action: request.path}
+            .new-wrapper__main__image
+              %i{class: "fas fa-camera"}
+
+            = f.fields_for :images do |i|
+              = i.file_field :image, {class: "file-field", name: "message[images_attributes][#{@message.images.count}][image]", id: "message_images_attributes_#{@message.images.count}_image"}
+              = i.check_box :_destroy, {class: "hidden"}
+              - @message.images.each_with_index do |image, index|
+                = i.file_field :image, {class: "file-field", name: "message[images_attributes][#{index}][image]", id: "message_images_attributes_#{index}_image"}
+          -#  = f.label :"images_attributes_#{@item.images.length}_image", class: "label-box", id: "label-box--#{@item.images.length}" do
+          
+          .new-wrapper__main__title 投稿画像
+          - @message.images.each_with_index do |image, index|
+            .item-image{ id: "item-image#{index}" }
+              .item-image__content
+                .item-image__content--icon
+                  = image_tag image.image.url, width: "110", height: "100", alt: "preview"
+              .item-image__operetion
+                .item-image__operetion--delete--edit{ index: "#{index}" }
+                  削除
+          -# = f.fields_for :images do |i|
+          -#   = i.check_box :_destroy, {class: "hidden"}
+      .new-wrapper__main__content
+        = f.text_area :content, {class: "new-wrapper__main__content--text", placeholder: "文字を入力してください" }
+        -# = f.text_area :content, {class: "new-wrapper__main__input-textarea", placeholder: "商品の説明(必須 1,000文字以内)\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+      .new-wrapper__main__submit
+        = f.submit "送信する", {class:"new-wrapper__main__submit--btn"}
+
+
