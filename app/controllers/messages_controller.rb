@@ -1,11 +1,12 @@
 class MessagesController < ApplicationController
   def index
+    @messages = Message.all
   end
 
   def new
     @message = Message.new
-    # @message.images.new
-    @message.images.build
+    @message.images.new
+    # @message.images.build
   end 
 
   def create
@@ -14,9 +15,9 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     # @message = @message.images.new(message_params)
     # if Message.create(message_params)
-    # if @message.valid?
-    #    @message.save
-    if @message.save
+    if @message.valid?
+       @message.save
+    # if @message.save
       redirect_to root_path
     else  
       # flash.now[:alert]= "投稿が失敗しました"

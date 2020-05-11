@@ -41,6 +41,10 @@
           height: 70%;
           width: 100%;
           background-color: goldenrod;
+          .message__content__image img {
+            height: 30px;
+            width: 30px;
+          }
         }
         &__content {
           height: 30%;
