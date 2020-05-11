@@ -3,7 +3,7 @@
 .show
   .show__image
     - @message.images.each do |image|
-      = image_tag image.image.url
+      = image_tag image.image.url, {class: "show__image__tag"}
   .show__message
     = @message.content
   .show__comment
