@@ -1,0 +1,19 @@
+.like-link{id: "like-link-#{message.id}"}
+  -if current_user.likes.find_by(message_id: message.id)
+    = link_to unless_path(message.id), method: :delete, remoto: true do
+      .like-link__delete__btn{id: "delete__btn#{message.id}"}
+        = message_likes.count.to_s
+  - else  
+    = link_to like_path(message.id), method: :post, remoto: true do
+      .like-link__delete__btn{id: "delete__btn#{message.id}"} 
+        = message.likes.count.to_s
+
+-# .like-link{id: "like-link-#{@message.id}"}
+-#   -if current_user.likes.find_by(message_id: @message.id)
+-#     = link_to unless_path(@message.id), method: :delete, remoto: true do
+-#       .like-link__delete__btn{id: "delete__btn#{@message.id}"}
+-#         = @message_likes.count.to_s
+-#   - else  
+-#     = link_to like_path(@message.id), method: :post, remoto: true
+-#       .like-link__delete__btn{id: "delete__btn#{@message.id}"}
+-#         = @message.likes.count.to_s
