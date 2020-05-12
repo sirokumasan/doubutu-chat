@@ -5,7 +5,6 @@ class LikesController < ApplicationController
     @like = Like.create(user_id: current_user.id, message_id: params[:message_id])
     @likes = Like.where(message_id: params[:message_id])
     @messages = Message.includes(:user)
-    redirect_to message_path(@message)
   end
 
   def unlike
@@ -13,7 +12,6 @@ class LikesController < ApplicationController
     @like.destroy
     @likes = Like.where(message_id: params[:message_id])
     @messages = Message.includes(:user)
-    redirect_to message_path(@message)
   end
 
   private
