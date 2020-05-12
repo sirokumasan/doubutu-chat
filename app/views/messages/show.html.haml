@@ -1,11 +1,23 @@
 = render "header"
 -# = render "side_bar"
 .show
+  .more
+    %span
+      =image_tag 'arrow_top.png'
+    %ul.more__list 
+      %li
+        = link_to "削除", message_path(@message.id), method: "delete"
+        = link_to "編集", edit_message_path(@message.id)
   .show__image
     - @message.images.each do |image|
       = image_tag image.image.url, {class: "show__image__tag"}
+  .show__user
+    %p.show__user__name 
+      =@message.user.name
+    %p.show__user__time
+      = @message.created_at
   .show__message
-    = @message.content
+    = simple_format(@message.content)
   .show__comment
-  = link_to "削除", message_path(@message.id), method: "delete"
+ 
     
