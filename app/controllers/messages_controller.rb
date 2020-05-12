@@ -29,9 +29,30 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
   end
 
+  def edit
+    @message = Message.find(params[:id])
+  end
+
+  def update
+    # binding.pry
+    @message = Message.find(params[:id])
+    if  @message.update(message_params)
+      redirect_to root_path
+    else  
+      render :new
+    end
+  end
+
+  def destroy
+    message = Message.find(params[:id])
+    message.destroy
+    redirect_to root_path
+  end
+
+
   private 
   def message_params
-    params.require(:message).permit(:content, images_attributes: [:image, :id]).merge(user_id: current_user.id)
+    params.require(:message).permit(:content, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
     # params.require(:product).permit(:name, images_attributes: [:image, :id]).merge(user_id: current_user.id)
   end
 end  
