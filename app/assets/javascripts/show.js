@@ -1,5 +1,5 @@
 $(function() {
-  console.log('ok')
+ 
   $('.show__image').slick({
     dots: true,
     autoplay: true,
@@ -11,5 +11,46 @@ $(function() {
     infinite: true,
     swipe: true,
   });
-  console.log('err')
+
+  function addHTML(comment){
+    if(comment.text) {
+      var html = `<div class="comment">
+                    <strong>
+                      <a class="show__comments__comment__name" href="#">${comment.user_name}:</a>
+                    </strong>
+                    <div class="show__comments__comment__text">
+                      <p>${comment.text}</p>
+                    </div>
+                   </div>`
+     $('.show__comments__comment').prepend(html);
+    }
+   
+  }
+
+
+
+
+  $('#new_comment').on('submit', function(e) {
+    e.preventDefault();
+    var formdata = new FormData(this);
+    var url = $(this).attr('action');
+    console.log('c')
+    $.ajax ({
+      url: url,
+      data: formdata,
+      type: "POST",
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(data) {
+      console.log('ok')
+      addHTML(data);
+      $('.show__comment__text').val('');
+      $('.show__comment__form').prop('disabled', false);
+    })
+    .fail(function() {
+      console.log('error')
+    })
+  })
 });

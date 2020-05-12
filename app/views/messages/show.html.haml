@@ -18,6 +18,24 @@
       = @message.created_at
   .show__message
     = simple_format(@message.content)
+
   .show__comment
+    -if current_user
+      =form_for [@message, @comment] do |f|
+        =f.text_area :text, placeholder: "コメントする", rows: "2", class: "show__comment__text"
+        =f.submit "SENT", class: 'show__comment__form'
+    - else 
+      %strong
+        %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+  .show__comments
+    %h6.show__title <コメント一覧>
+    .show__comments__comment
+      - if @comments 
+        - @comments.each do |comment|
+          .comment 
+            %strong 
+              =link_to "#{comment.user.name}:", "#", class: "show__comments__comment__name"
+            .show__comments__comment__text
+              = simple_format(comment.text)
  
     
