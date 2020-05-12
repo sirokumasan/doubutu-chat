@@ -2,16 +2,21 @@ class LikesController < ApplicationController
   before_action :set_variables
 
   def like
-    @like = current_user.likes.new(message_id: @message.id)
-    @lile.save
+    @like = Like.create(user_id: current_user.id, message_id: params[:message_id])
+    @likes = Like.where(message_id: params[:message_id])
+    @messages = Message.includes(:user)
+    redirect_to message_path(@message)
   end
 
   def unlike
-    like = current_user.likes.find_by(message_id: @message.id)
-    like.destroy
+    @like = Like.find_by(user_id: current_user.id, message_id: params[:message_id])
+    @like.destroy
+    @likes = Like.where(message_id: params[:message_id])
+    @messages = Message.includes(:user)
+    redirect_to message_path(@message)
   end
 
-  privat
+  private
   def set_variables
     @message = Message.find(params[:message_id])
   end
