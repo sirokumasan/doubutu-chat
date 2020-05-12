@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def index
-    @messages = Message.all
+    @messages = Message.includes(:user)
   end
 
   def new
@@ -27,6 +27,8 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    @comment = Comment.new
+    @comments = @message.comments.includes(:user).order("created_at DESC")
   end
 
   def edit
