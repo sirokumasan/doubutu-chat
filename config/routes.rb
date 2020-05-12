@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     resources :comments,   only: [:create]
   end
   post    '/like/:messge_id' => 'likes#like', as: 'like'
-  delete  '/like/:message_id' => 'likes#unlike' as: 'unlike'
+  delete  '/like/:message_id' => 'likes#unlike', as: 'unlike'
 end
