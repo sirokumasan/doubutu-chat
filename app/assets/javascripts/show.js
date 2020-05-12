@@ -27,9 +27,6 @@ $(function() {
    
   }
 
-
-
-
   $('#new_comment').on('submit', function(e) {
     e.preventDefault();
     var formdata = new FormData(this);
@@ -44,7 +41,6 @@ $(function() {
       contentType: false
     })
     .done(function(data) {
-      console.log('ok')
       addHTML(data);
       $('.show__comment__text').val('');
       $('.show__comment__form').prop('disabled', false);
@@ -53,4 +49,10 @@ $(function() {
       console.log('error')
     })
   })
+  // $('#like-button').on('click', function(e) {
+  //     e.preventDefault()
+
+  //     console.log('ok')
+
+  // })
 });

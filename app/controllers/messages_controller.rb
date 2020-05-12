@@ -29,6 +29,7 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @comment = Comment.new
     @comments = @message.comments.includes(:user).order("created_at DESC")
+    @like = Like.new
   end
 
   def edit

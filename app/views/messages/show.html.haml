@@ -11,9 +11,23 @@
   .show__image
     - @message.images.each do |image|
       = image_tag image.image.url, {class: "show__image__tag"}
+  
   .show__user
+    -# {id: "like-link-#{@message.id}"}
+    -# .like-link{id: "like-link-#{@message.id}"}
+    -#   -if current_user.likes.find_by(message_id: @message.id)
+    -#     = link_to unless_path(@message.id), method: :delete, remoto: true do
+    -#       .like-link__delete__btn{id: "delete__btn#{@message.id}"}
+    -#         = @message_likes.count.to_s
+    -#   - else  
+    -#     = link_to like_path(@message.id), method: :post, remoto: true do
+    -#       .like-link__delete__btn{id: "delete__btn#{@message.id}"}
+    -#         = @message.likes.count.to_s
+    .like{ id: "link-#{@message.id}"}
+      = render partial: "likes/like", locals: {message: @message}
+      -# = render 'likes/like_links', tweet: tweet
     %p.show__user__name 
-      =@message.user.name
+      = @message.user.name
     %p.show__user__time
       = @message.created_at
   .show__message

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200512005456) do
+ActiveRecord::Schema.define(version: 20200512045517) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                  null: false
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20200512005456) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["message_id"], name: "index_images_on_message_id", using: :btree
+  end
+
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "message_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_likes_on_message_id", using: :btree
+    t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -55,4 +64,6 @@ ActiveRecord::Schema.define(version: 20200512005456) do
   add_foreign_key "comments", "messages"
   add_foreign_key "comments", "users"
   add_foreign_key "images", "messages"
+  add_foreign_key "likes", "messages"
+  add_foreign_key "likes", "users"
 end
