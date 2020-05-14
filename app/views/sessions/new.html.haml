@@ -7,9 +7,10 @@
       %h5 登録しているユーザーでログイン
       = render "devise/shared/links"
     .account-page__inner--right.user-form
-      -# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      -# =scope::session form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      -# = form_for( url: login_path, scope::session) do |f|
       = form_for :session, url: login_path do |f|
-        .field
+        .field 
           .field-label
             = f.label :email
           .field-input

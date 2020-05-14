@@ -5,12 +5,14 @@
   #navbarTogglerDemo02.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto.mt-2.mt-lg-0
       %li.nav-item.active.dropdown-btn.nav-link.relative
-        =current_user.name   
-        %ul.dropdown
-          - if logged_in?
+        - if logged_in?
+          =current_user.name   
+          %ul.dropdown
             %li
               = link_to "ログアウト", logout_path, method: :delete, class:"hiddon"
-          - else
+        - else
+          USER
+          %ul.dropdown
             %li
               = link_to "新規登録", new_user_path, class:"hiddon"
             %li
