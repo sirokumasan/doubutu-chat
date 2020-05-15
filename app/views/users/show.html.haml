@@ -9,4 +9,8 @@
     - if logged_in? && current_user.id == @user.id
       = link_to "削除", @user, method: :delete
       = link_to "編集", edit_user_path(@user)
+  %session.stats
+    = render 'shared/stats'
+  .stats
+    =render 'follow_form' if logged_in?
  
