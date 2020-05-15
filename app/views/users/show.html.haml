@@ -4,4 +4,7 @@
     %session.user_info
       = gravatar_for @user
       = @user.name
+    = link_to "編集", edit_user_path(@user)
+    - if current_user.admin? && !current_user?(@user)
+      = link_to "削除", @user, method: :delete, data: {confim: "You sure" }
  

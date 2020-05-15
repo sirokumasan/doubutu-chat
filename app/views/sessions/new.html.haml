@@ -21,6 +21,11 @@
               %i (英数字8文字以上)
             .field-input
               = f.password_field :password, autocomplete: "off"
+          -# .field-label
+          -#   = f.label :remember_me
+          .field-input
+            = f.check_box :remember_me
+            %span.remember_me ログイン情報保存しますか
           .actions
             = f.submit "Log in", class: 'btn'
 

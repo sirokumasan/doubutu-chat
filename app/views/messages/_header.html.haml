@@ -10,6 +10,8 @@
           %ul.dropdown
             %li
               = link_to "ログアウト", logout_path, method: :delete, class:"hiddon"
+            %li
+              = link_to "マイページ", user_path(current_user), class: "hiddon"
         - else
           USER
           %ul.dropdown

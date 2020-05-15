@@ -3,7 +3,7 @@
     .account-page__inner--left.account-page__header
       %h2 Edit Account
       %h5 アカウントの編集
-      = link_to "ログアウト", '#', class: 'btn'
+      = link_to "ログアウト", logout_path, method: "delete", class: 'btn'
       = link_to "トップページに戻る", :back, class: 'btn'
     .account-page__inner--right.user-form
       = form_for @user do |f|
@@ -17,5 +17,16 @@
             = f.label :email
           .field-input
             = f.email_field :email
+        .field
+          .field-label
+            = f.label :password
+            %i (英数字8文字以上)
+          .field-input
+            = f.password_field :password, autocomplete: "off"
+        .field
+          .field-label
+            = f.label :password_confirmation
+          .field-input
+            = f.password_field :password_confirmation, autocomplete: "off"
         .actions
           = f.submit "Update", class: 'btn'
