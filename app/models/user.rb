@@ -16,6 +16,11 @@ class User < ApplicationRecord
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:  :destroy
+  has_many :passive_relationships, class_name: "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent: :destroy    
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
    # 渡された文字列のハッシュ値を返す
    def User.digest(string)
@@ -44,6 +49,21 @@ class User < ApplicationRecord
   # ユーザのログイン情報を破棄する
   def forget
     self.update_attribute(:remember_digest, nil)
+  end
+
+  # ユーザーをフォローする
+  def follow(other_user)
+    following << other_user
+  end
+
+  # ユーザのフォローを解除する
+  def nufollow(other_user)
+    active_relationships.fund_by(followed: other_user.id).destroy
+  end
+
+  # 現在のユーザがフォローしていたらtrueを返す
+  def following?(other_user)
+    following.Include?(other_user)
   end
 
 end

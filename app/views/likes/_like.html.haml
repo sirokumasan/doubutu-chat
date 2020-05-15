@@ -1,4 +1,4 @@
-- if user_signed_in?
+- if logged_in?
   - if message.like_user(current_user.id)
     = button_to unlike_path(message.id), method: :delete, id: "like-button", remote: true do
       %i{class: "fas fa-heart"}
