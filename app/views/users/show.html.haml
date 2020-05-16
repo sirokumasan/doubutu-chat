@@ -1,16 +1,28 @@
-- provide(:title, @user.name)
+-# - provide(:title, @user.name)
+= render "messages/header"
 .row
-  %aside.col-md-4
-    %session.user_info
-      = gravatar_for @user
-      = @user.name
-    - if current_user.admin? && !current_user?(@user)
-      = link_to "削除", @user, method: :delete, data: {confim: "You sure" }
-    - if logged_in? && current_user.id == @user.id
-      = link_to "削除", @user, method: :delete
-      = link_to "編集", edit_user_path(@user)
-  %session.stats
+  .user_show__image
+    - @messages.each do |message|
+      .user_show__image__post
+        - message.images.first(1).each do |image|
+          = image_tag image.image.url, {class: "show__image__tag" , height:'350px' ,width: "100%"}
+  .user__follow
     = render 'shared/stats'
-  .stats
-    =render 'follow_form' if logged_in?
+  -# .user__followed
+  -#   %session.stats
+  -#     = render 'shared/stats'
+
+
+
+  -# %aside.col-md-4
+  -#   %session.user_info
+  -#     = gravatar_for @user
+  -#     = @user.name
+  -#   - if current_user.admin? && !current_user?(@user)
+  -#     = link_to "削除", @user, method: :delete, data: {confim: "You sure" }
+  -#   - if logged_in? && current_user.id == @user.id
+  -#     = link_to "削除", @user, method: :delete
+  -#     = link_to "編集", edit_user_path(@user)
+  
+
  

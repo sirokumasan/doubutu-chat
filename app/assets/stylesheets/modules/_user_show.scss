@@ -1,0 +1,18 @@
+.row {
+  width: 50%;
+  background-color: skyblue;
+  margin: 0 auto;
+  margin-top: 100px;
+  display: flex;
+}
+
+.user_show__image {
+  width: 100%;
+  height: 350px;
+  display: none;
+  &__post {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

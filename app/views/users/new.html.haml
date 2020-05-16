@@ -7,9 +7,14 @@
     .account-page__inner--right.user-form
       = form_for @user do |f|
         = render 'shared/error_messages'
-        -# = flash.now[:alert] = "メッセージを入力してください"
-        -# = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        -# = devise_error_messages!
+        .field#field__image
+          .field-label
+            %label{class: "flexbox", action: request.path}
+              -# =label :プロフィール写真を載せてください,{class: "flexbox", action: request.path}
+              .field-label__image
+                %p.pfofiel--text プロフィール写真を載せてください
+                %f{class: "fas fa-camera pfofiel"}
+                = f.file_field :image, {class: "file-field",id: "pfofiel__image", type: "file"}
         .field
           .field-label
             = f.label :name
