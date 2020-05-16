@@ -6,14 +6,18 @@ class RelationshipsController < ApplicationController
     #binding.pry
     @user = User.find(params[:relationship][:followed_id])
     current_user.follow(@user)
-    redirect_to root_url
+    respond_to do |format| 
+      format.html {redirect_to @user}
+      format.js
   end
 
   # delete/relationships/:id
   def destroy  
-    user = Relationship.find(params[:id]).followed
+    @user = Relationship.find(params[:id]).followed
     current_user.unfollow(user)
-    redirect_to user
+    respond_to do |format|
+      format.html {redirect_to @user}
+      format.js
   end
 
 end
