@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 
-  before_action :logged_in_user, only: [:edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update, :destroy, :following, :followers]
+  before_action :correct_user,   only: [:edit, :update, :following, :followers]
   before_action :admin_user,     only: :destroy
 
   def show
     @user = User.find(params[:id])
     @messages = @user.messages
+    @users = @user.following
   end
 
   def new
@@ -46,9 +47,19 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
 
+  def following
+    @users = @user.following
+    render 'show_follow'
+  end
+
+  def followers
+    @users = @user.followers
+    render 'show_follow'
+  end
+
   private
     def user_params
-      params.require(:user).permit(:image_user, :name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:pfofiel, :name, :email, :password, :password_confirmation)
     end
 
     def logged_in_user

@@ -30,14 +30,14 @@ $(function() {
 
   function addpfofiel() {
     var html = `<p class="pfofiel--text">プロフィール写真を載せてください</p>
-                   <f class="fas fa-camera pfofiel"></f>
-                   <input class="file-field" type="file" name="user[image]" id="user_image">`
+                <f class="fas fa-camera pfofiel"></f>
+                <input class="file-field" type="file" name="user[pfofiel]" id="pfofiel__image">`
                   //  <input class="file-field" type="file" name="message[images_attributes][${t}][image]" id="message_images_attributes_${t}_image" >
     $('.field-label__image').append(html);
   }
 
-  $('#pfofiel__image').on('change', function(e) {
-    e.preventDefault();
+  $(document).on('change', '#pfofiel__image', function(e) {
+    // e.preventDefault();
     console.log('ok');
     var file = e.target.files[0];
     var blob = window.URL.createObjectURL(file);
@@ -49,4 +49,9 @@ $(function() {
     $('.field-label__image').empty();
     addpfofiel()
   });
+
+
+
+
+  
 });
