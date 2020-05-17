@@ -32,6 +32,7 @@ class MessagesController < ApplicationController
     @comments = @message.comments.includes(:user).order("created_at DESC")
     @like = Like.new
     impressionist(@message, nil, :unique => [:session_hash])
+    @page_views = @message.impressionist_count
   end
 
   def edit
