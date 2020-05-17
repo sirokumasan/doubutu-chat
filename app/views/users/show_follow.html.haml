@@ -38,8 +38,8 @@
           .user_show__image__content--text
             = user.name
           .user__profiel__content--follow
-            - if logged_in?
-              -if current_user.following?(@user)
-                = render 'unfollow'
-              - else
-                = render 'follow'
+            -# - if logged_in?
+            -#   -if current_user.following?(@user)
+            -#     = render 'unfollow'
+            -#   - else
+            -#     = render 'follow'

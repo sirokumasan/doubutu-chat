@@ -21,7 +21,7 @@
         %br
         = @user.messages.count
       .user__profiel__content--follow
-        = render 'follow_form'
+        = render 'follow_form' if logged_in?
         -#  render partial: "likes/like", locals: {message: @message}
     .user__profiel__follow
       = render 'shared/stats'
@@ -44,7 +44,7 @@
   
   -# .user_show__image.user_show__follwing
   -#   = render 'following'
-  
+
   -# .user__followed
   -#   %session.stats
   -#     = render 'shared/stats'
