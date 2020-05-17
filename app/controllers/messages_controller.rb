@@ -31,6 +31,7 @@ class MessagesController < ApplicationController
     @comment = Comment.new
     @comments = @message.comments.includes(:user).order("created_at DESC")
     @like = Like.new
+    impressionist(@user, nil, :unique => [:session_hash])
   end
 
   def edit
