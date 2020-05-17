@@ -35,6 +35,7 @@
       = @message.created_at
   .show__message
     = simple_format(@message.content)
+  = @message.impressions_count
 
   .show__comment
     -if current_user
