@@ -10,7 +10,7 @@
         = link_to "編集", edit_message_path(@message.id)
   .show__image
     - @message.images.each do |image|
-      = image_tag image.image.url, {class: "show__image__tag"}
+      = image_tag image.image.url, {class: "show__image__tag", width: "100px", height: "200px"}
   
   .show__user
     -# {id: "like-link-#{@message.id}"}

@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   def index
     @messages = Message.includes(:user)
+    @all_ranks = Message.find(Like.group(:message_id).order('count(message_id) desc').limit(10).count(:message_id).keys)
   end
 
   def new
@@ -56,10 +57,11 @@ class MessagesController < ApplicationController
     @all_ranks = Message.rnking
   end
 
-
   private 
-  def message_params
-    params.require(:message).permit(:content, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
-    # params.require(:product).permit(:name, images_attributes: [:image, :id]).merge(user_id: current_user.id)
-  end
+
+    def message_params
+      params.require(:message).permit(:content, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+      # params.require(:product).permit(:name, images_attributes: [:image, :id]).merge(user_id: current_user.id)
+    end
+    
 end  
