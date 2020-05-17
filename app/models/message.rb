@@ -12,4 +12,8 @@ class Message < ApplicationRecord
     likes.find_by(user_id: user_id)
   end
 
+  def ranking
+    find(Like.group(:message_id).order('count(message_id) desc').limit(10).pluck(:message_id))
+  end
+
 end

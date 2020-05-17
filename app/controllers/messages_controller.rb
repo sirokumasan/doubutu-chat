@@ -52,6 +52,10 @@ class MessagesController < ApplicationController
     redirect_to root_path
   end
 
+  def rnking
+    @all_ranks = Message.rnking
+  end
+
 
   private 
   def message_params
