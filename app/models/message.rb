@@ -7,6 +7,7 @@ class Message < ApplicationRecord
   
   accepts_nested_attributes_for :images, allow_destroy: true
   validates :content, presence: true
+  is_impressionable counter_cache: true
 
   def like_user(user_id)
     likes.find_by(user_id: user_id)
