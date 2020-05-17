@@ -7,6 +7,23 @@
       = link_to "トップページに戻る", :back, class: 'btn'
     .account-page__inner--right.user-form
       = form_for @user do |f|
+        .field#field__image
+          .field-label
+            %label{class: "flexbox", action: request.path}
+              .field-label__image
+                - if(@user.pfofiel.presence)
+                  = f.file_field :pfofiel, {class: "file-field",id: "pfofiel__image", type: "file"}
+                  .pfofiel__item
+                    .item-image__content
+                      .item-image__content--icon
+                        = image_tag @user.pfofiel, width: "150px", height: "150px"
+                      .item-image__operetion
+                        .pfofiel__item--delete{ index: "0" } 削除
+                - else
+                  %p.pfofiel--text プロフィール写真を載せてください
+                  %f{class: "fas fa-camera pfofiel"}
+                  = f.file_field :pfofiel, {class: "file-field",id: "pfofiel__image", type: "file"}
+
         .field
           .field-label
             = f.label :name

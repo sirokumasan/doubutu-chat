@@ -19,12 +19,12 @@
   }
 
   .account-page__header {
+    position: relative;
     h2 {
       margin-bottom: 10px;
       letter-spacing: 3px;
       font-size: 40px;
       font-weight: 200;
-
       &:after {
         content: '';
         display: block;
@@ -33,7 +33,7 @@
         border-bottom: 1px solid #38aef0;
       }
     }
-
+  
     h5 {
       margin-bottom: 20px;
       font-size: 14px;
@@ -146,4 +146,26 @@
 }
 .remember_me {
   display: inline-block;
+}
+
+#field__image {
+  position: absolute;
+  top: 300px;
+  left: 350px;
+}
+
+
+.field-label__image {
+  border: 2px solid;
+  height: 150px;
+  width: 150px;
+}
+
+.pfofiel {
+  font-size: 25px;
+  margin-top: 30px;
+}
+
+.pfofiel__item--delete {
+  text-align: center;
 }

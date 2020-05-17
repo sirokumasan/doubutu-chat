@@ -1,0 +1,7 @@
+.user_show__image__posts
+  - @users.each do |user|
+    .user_show__image__post
+      = link_to  user_path(user.id) do
+        = image_tag user.pfofiel, {class: "show__image__tag" , height: "100%" ,width: "100%"}
+    .user_show__image__content
+      = @user.name

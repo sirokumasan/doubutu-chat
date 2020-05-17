@@ -1,0 +1,45 @@
+= render "messages/header"
+.row
+  .user__profiel
+    - if @user.pfofiel.presence
+      .user__profiel__image
+        = image_tag @user.pfofiel.url, height:'100%' ,width: "100%"
+    - else 
+      .user__profiel__image
+        %P.noimage NO IMAGE
+    .user__profiel__content
+      .user__profiel__content--name
+        = @user.name
+      - if logged_in? && current_user.id == @user.id
+        .botton__edit__delete
+          = button_to "削除", @user, method: :delete, class: "botton__edit__delete--btn"
+          = button_to "編集", edit_user_path(@user.id), method: 'get', class: "botton__edit__delete--btn"
+          = button_to "投稿", new_message_path, method: 'get', class: "botton__edit__delete--btn"
+      .user__profiel__content--count
+        投稿した回数 
+        %br
+        = link_to @user.messages.count, @user
+      .user__profiel__content--follow
+        = render 'follow_form'
+        -#  render partial: "likes/like", locals: {message: @message}
+    .user__profiel__follow
+      = render 'shared/stats'
+
+  .user_show__image.user_show__follwing
+    - @users.each do |user|
+      .user_show__image__posts
+        .user_show__image__post
+          = link_to  user_path(user.id) do
+            - if user.pfofiel.presence
+              = image_tag user.pfofiel.url, {class: "show__image__tag" , height: "100%" ,width: "100%"}
+            - else 
+              %P.noimage NO IMAGE
+        .user_show__image__content
+          .user_show__image__content--text
+            = user.name
+          .user__profiel__content--follow
+            -# - if logged_in?
+            -#   -if current_user.following?(@user)
+            -#     = render 'unfollow'
+            -#   - else
+            -#     = render 'follow'
