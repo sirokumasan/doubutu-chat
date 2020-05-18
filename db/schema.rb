@@ -86,10 +86,8 @@ ActiveRecord::Schema.define(version: 20200518021644) do
 
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "tag_name",   null: false
-    t.integer  "message_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["message_id"], name: "index_tags_on_message_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -110,5 +108,4 @@ ActiveRecord::Schema.define(version: 20200518021644) do
   add_foreign_key "images", "messages"
   add_foreign_key "likes", "messages"
   add_foreign_key "likes", "users"
-  add_foreign_key "tags", "messages"
 end
