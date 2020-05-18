@@ -53,4 +53,12 @@ $(function() {
         //inputタグに入ったファイルを削除
         // $('.file_field').val("");
   });
+  $('#message_tag_ids').change(function() {
+    choise = $('option:selected').text()
+    if(choise === "その他" ) {
+      $('.other__choise').css("display", "inline")
+    }else {
+      $('.other__choise').css("display", "none")
+    }
+  })
 });

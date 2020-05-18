@@ -1,9 +1,11 @@
 class MessagesController < ApplicationController
   def index
     @messages = Message.includes(:user)
+    #@image = Image.message  #.includes(:message)
     @all_ranks = Message.find(Like.group(:message_id).order('count(message_id) desc').limit(10).count(:message_id).keys)
     @most_views = Message.order("impressions_count DESC").take(10)
-  end
+    @list_tags = Tag.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
+  end 
 
   def new
     @message = Message.new
@@ -15,9 +17,12 @@ class MessagesController < ApplicationController
     # binding.pry
     # @message = current_user.messages.build(message_params)
     @message = Message.new(message_params)
+    tag_list = params[:message][:tag][:tag_name].split(",")
     # @message = @message.images.new(message_params)
     # if Message.create(message_params)
+     
     if @message.valid?
+       @message.save_messages(tag_list) if params[:message][:tag][:tag_name].presence
        @message.save
     # if @message.save
       redirect_to root_path
@@ -64,7 +69,7 @@ class MessagesController < ApplicationController
   private 
 
     def message_params
-      params.require(:message).permit(:content, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+      params.require(:message).permit(:content, :tag_ids, images_attributes: [:image, :_destroy, :id, :tags]).merge(user_id: current_user.id)
       # params.require(:product).permit(:name, images_attributes: [:image, :id]).merge(user_id: current_user.id)
     end
     
