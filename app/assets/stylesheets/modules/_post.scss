@@ -32,6 +32,19 @@
       height: 100%;
     } 
   }
+  &__main__tag {
+    height: 100px;
+    width: 400px;
+    margin: 20px auto;
+    .other__choise {
+      display: none;
+      width: 100%;
+      margin-top: 10px;
+    }
+    #message_tag_ids {
+      width: 100%;
+    }
+  }
   &__main__submit {
     text-align: center;
     &--btn {

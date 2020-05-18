@@ -55,11 +55,10 @@ $(function() {
   });
   $('#message_tag_ids').change(function() {
     choise = $('option:selected').text()
-    if(choise === "犬" ) {
-      $('.other__choise').css("display", "none")
-      console.log(choise)
-    }else {
+    if(choise === "その他" ) {
       $('.other__choise').css("display", "inline")
+    }else {
+      $('.other__choise').css("display", "none")
     }
   })
 });
