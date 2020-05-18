@@ -53,4 +53,13 @@ $(function() {
         //inputタグに入ったファイルを削除
         // $('.file_field').val("");
   });
+  $('#message_tag_ids').change(function() {
+    choise = $('option:selected').text()
+    if(choise === "犬" ) {
+      $('.other__choise').css("display", "none")
+      console.log(choise)
+    }else {
+      $('.other__choise').css("display", "inline")
+    }
+  })
 });
