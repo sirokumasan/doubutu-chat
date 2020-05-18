@@ -1,9 +1,10 @@
 class Message < ApplicationRecord
   belongs_to :user
-  has_many   :images,  dependent: :destroy
+  has_many   :images,       dependent: :destroy
   has_many   :comments
-  has_many   :likes,   dependent: :destroy
+  has_many   :likes,        dependent: :destroy
   has_many   :liked_users,  through: :likes, source: :user
+  has_many   :tags,         dependent: :destroy
   
   accepts_nested_attributes_for :images, allow_destroy: true
   validates :content, presence: true
