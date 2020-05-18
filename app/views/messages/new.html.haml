@@ -22,6 +22,9 @@
       .new-wrapper__main__content
         = f.text_area :content, {class: "new-wrapper__main__content--text", placeholder: "文字を入力してください" }
         -# = f.text_area :content, {class: "new-wrapper__main__input-textarea", placeholder: "商品の説明(必須 1,000文字以内)\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+      -# .new-wrapper__main__content
+      -#   =f.fields_for :tags do |i|
+      -#     = i.collection_select :tag_name, tag.all
       .new-wrapper__main__submit
         = f.submit "送信する", {class:"new-wrapper__main__submit--btn"}
 
