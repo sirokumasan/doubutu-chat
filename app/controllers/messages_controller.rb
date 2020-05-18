@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   def index
     @messages = Message.includes(:user)
     @all_ranks = Message.find(Like.group(:message_id).order('count(message_id) desc').limit(10).count(:message_id).keys)
+    @most_views = Message.order("impressions_count DESC").take(10)
   end
 
   def new
@@ -31,8 +32,9 @@ class MessagesController < ApplicationController
     @comment = Comment.new
     @comments = @message.comments.includes(:user).order("created_at DESC")
     @like = Like.new
-    impressionist(@message, nil, :unique => [:session_hash])
+    #impressionist(@message, nil, :unique => [:session_hash])
     @page_views = @message.impressionist_count
+    #where("created_at <= ?", Time.now)
   end
 
   def edit

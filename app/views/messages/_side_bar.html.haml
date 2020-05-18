@@ -15,5 +15,7 @@
     .group_type
       めだか
   - @all_ranks.each do |message|
-    = message.content
+    = message.id
+  - @most_views.each do |message|
+    = message.id
     
