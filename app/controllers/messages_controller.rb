@@ -1,10 +1,11 @@
 class MessagesController < ApplicationController
   def index
     @messages = Message.includes(:user)
+    #@image = Image.message  #.includes(:message)
     @all_ranks = Message.find(Like.group(:message_id).order('count(message_id) desc').limit(10).count(:message_id).keys)
     @most_views = Message.order("impressions_count DESC").take(10)
-    @list_tags = Tag.include(:message)
-  end
+    @list_tags = Tag.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
+  end 
 
   def new
     @message = Message.new

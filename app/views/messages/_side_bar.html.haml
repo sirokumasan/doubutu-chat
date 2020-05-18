@@ -1,19 +1,13 @@
 .groups
+  -# .group
+  -#   .group_type
+  -#     =link_to "犬", "#"
   .group
-    .group_type
-      =link_to "犬", "#"
-  .group
-    .group_type
-      猫
-  .group
-    .group_type
-      亀
-  .group
-    .group_type
-      猿
-  .group
-    .group_type
-      めだか
+    -# - binding.pry
+    -@list_tags.each do |tag|
+      .group_type
+        =tag.tag_name
+        ="(#{tag.message_tags.count})"
   - @all_ranks.each do |message|
     = message.id
   - @most_views.each do |message|
