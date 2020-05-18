@@ -7,6 +7,7 @@ class Message < ApplicationRecord
   has_many   :tags,         dependent: :destroy
   
   accepts_nested_attributes_for :images, allow_destroy: true
+  accepts_nested_attributes_for :tags,   allow_destroy: true
   validates :content, presence: true
   is_impressionable counter_cache: true
 
