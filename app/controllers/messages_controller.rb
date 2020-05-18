@@ -15,12 +15,13 @@ class MessagesController < ApplicationController
     # binding.pry
     # @message = current_user.messages.build(message_params)
     @message = Message.new(message_params)
-    tag_list = params[:message][:tag_name]
+    tag_list = params[:message][:tag][:tag_name].split(",")
     # @message = @message.images.new(message_params)
     # if Message.create(message_params)
+     
     if @message.valid?
+       @message.save_messages(tag_list) if params[:message][:tag][:tag_name].presence
        @message.save
-       @message.save_messages(tag_list)
     # if @message.save
       redirect_to root_path
     else  

@@ -20,4 +20,22 @@ class Message < ApplicationRecord
     Message.find(Like.group(:message_id).order('count(message_id) desc').limit(10).count(:message_id).keys)
   end
 
+  def save_messages(tag)
+    #binding.pry
+    current_tag = Tag.pluck(:tag_name) unless self.tags.nil?
+    #binding.pry
+    old_tag = current_tag - tag
+    new_tag = tag - current_tag
+
+    old_tag.each do |old_name|
+      self.tags.delete Tag.find_by(tag_name:old_name)
+    end
+
+    new_tag.each do |new_name|
+      message_tag = Tag.find_or_create_by(tag_name: new_name )
+      self.tags << message_tag
+    end
+    #redirect_to root_path
+  end
+
 end
