@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200518021644) do
+ActiveRecord::Schema.define(version: 20200518030812) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                  null: false
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 20200518021644) do
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
+  create_table "message_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "message_id", null: false
+    t.integer  "tag_id",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_message_tags_on_message_id", using: :btree
+    t.index ["tag_id"], name: "index_message_tags_on_tag_id", using: :btree
+  end
+
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",           limit: 65535,             null: false
     t.integer  "user_id",                                     null: false
@@ -108,4 +117,6 @@ ActiveRecord::Schema.define(version: 20200518021644) do
   add_foreign_key "images", "messages"
   add_foreign_key "likes", "messages"
   add_foreign_key "likes", "users"
+  add_foreign_key "message_tags", "messages"
+  add_foreign_key "message_tags", "tags"
 end

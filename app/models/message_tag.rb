@@ -1,0 +1,2 @@
+class MessageTag < ApplicationRecord
+end
