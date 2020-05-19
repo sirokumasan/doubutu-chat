@@ -1,7 +1,11 @@
 .main
+  .message__tab.message__btn__normal
+    新着順
+  .message__tab.message__btn__rank
+    お気に入り順
   .messages
     - @messages.each do |message|
-      .message#message.normal
+      .message#message__normal
         .message__content
           .message__content__image
             = link_to  message_path(message.id) do
@@ -10,6 +14,7 @@
           .message__content__content
             %p#text
               = message.content
+ 
     - @all_ranks.each do |message|
       .message#message__rank
         .message__content
