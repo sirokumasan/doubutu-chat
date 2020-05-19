@@ -26,16 +26,18 @@
     .like{ id: "link-#{@message.id}"}
       = render partial: "likes/like", locals: {message: @message}
       -# = render 'likes/like_links', tweet: tweet
-    .stats
-      = render 'shared/stats'
-
-    %p.show__user__name 
-      = @message.user.name
-    %p.show__user__time
-      = @message.created_at
+    -# .stats
+    -#   = render 'shared/stats'
+    .show__user__info
+      .show__user__info__name 
+        = link_to "NAME: #{@message.user.name}", user_path(@message.user.id)
+        -# = @message.user.name
+      .show__user__info__time
+        = @message.created_at
   .show__message
+    -# .show__message__content
     = simple_format(@message.content)
-  = @page_views
+  -# = @page_views
 
   .show__comment
     -if current_user

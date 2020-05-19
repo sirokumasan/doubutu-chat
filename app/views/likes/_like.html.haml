@@ -2,13 +2,14 @@
   - if message.like_user(current_user.id)
     = button_to unlike_path(message.id), method: :delete, id: "like-button", remote: true do
       %i{class: "fas fa-heart"}
-      -# %i{class: "fas fa-camera"}
-      -# = icon('far', 'edit')<i class="far fa-heart"></i>
-      -# .like-link__delete__btn{id: "delete__btn#{message.id}"}
-        -# = message.likes.count.to_s
+        -# %i{class: "fas fa-camera"}
+        -# = icon('far', 'edit')<i class="far fa-heart"></i>
+        -# .like-link__delete__btn{id: "delete__btn#{message.id}"}
+          -# = message.likes.count.to_s
         = message.likes.count
   - else  
-    = button_to like_path(message.id), method: :post, id: "like-button", remote: true do
+    いいねと思ったら押してください!
+    = button_to like_path(message.id), method: :post, id: "like-butto7n", remote: true do
       -# .like-link__delete__btn{id: "delete__btn#{message.id}"} 
       %i{class: "far fa-heart"}
         = message.likes.count
