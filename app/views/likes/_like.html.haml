@@ -1,5 +1,5 @@
 - if logged_in?
-  - if message.like_user(current_user.id)
+  - if message.like_user(current_user.id) || message.user.id == current_user.id
     = button_to unlike_path(message.id), method: :delete, id: "like-button", remote: true do
       %i{class: "fas fa-heart"}
         -# %i{class: "fas fa-camera"}
@@ -14,7 +14,7 @@
       %i{class: "far fa-heart"}
         = message.likes.count
 - else 
-  %i{class: "far fa-heart"}
+  -# %i{class: "far fa-heart"}
   %i{class: "fas fa-heart"}
     = message.likes.count
 
