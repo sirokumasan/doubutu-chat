@@ -5,7 +5,7 @@
     お気に入り順
   .messages
     - @messages.each do |message|
-      .message#message__normal
+      .message.message__normal
         .message__content
           .message__content__image
             = link_to  message_path(message.id) do
@@ -16,7 +16,7 @@
               = message.content
  
     - @all_ranks.each do |message|
-      .message#message__rank
+      .message.message__rank
         .message__content
           .message__content__image
             = link_to  message_path(message.id) do
@@ -25,6 +25,16 @@
           .message__content__content
             %p#text
               = message.content
+    -# - @list_tags.each do |tag|
+    -#   .message.message__type
+    -#     .message__content
+    -#       .message__content__image
+    -#         = link_to  message_path(message.id) do
+    -#           - message.images.first(1).each do |image|
+    -#             = image_tag image.image.thumb.url, height: "100%", width: "100%"
+    -#       .message__content__content
+    -#         %p#text
+    -#           = message.content
     -# .message
     -#   .message__content
     -#     .message__content__image

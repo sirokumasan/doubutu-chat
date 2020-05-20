@@ -61,4 +61,25 @@ $(function() {
       $('.other__choise').css("display", "none")
     }
   })
+  $('.message__btn__rank').on('click', function(e) {
+    e.preventDefault();
+    console.log('ok')
+    $('.message').css("display", "none");
+    $('.message__rank').css("display", "inline");
+  })
+  $('.message__btn__normal').on('click', function(e) {
+    e.preventDefault();
+    console.log('ok')
+    $('.message').css("display", "none");
+    $('.message__normal').css("display", "inline");
+  })
+
+  $('.group__data').on('click', function(e) {
+    e.preventDefault();
+    var a = $(this).data('name');
+    console.log(a)
+    $('.message').css("display", "none");
+    $('.message__type').css("display", "inline");
+    // if(a === )
+  })
 });

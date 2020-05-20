@@ -99,8 +99,17 @@
   // color: red;
 }
 
-#message__rank {
+.message__rank {
   display: none;
+}
+
+.message__type {
+  display: none;
+}
+
+.group__data {
+  display: inline-block;
+  cursor: pointer;
 }
 // .link {
 //   // display: none;
