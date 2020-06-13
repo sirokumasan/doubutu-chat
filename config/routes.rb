@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   post    '/like/:message_id' => 'likes#like', as: 'like'
   delete  '/like/:message_id' => 'likes#unlike', as: 'unlike'
+  resources :tags, only: :index
   get    '/login'   => 'sessions#new'
   post   '/login'   => 'sessions#create'
   delete '/logout'  => 'sessions#destroy'
