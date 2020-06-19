@@ -14,7 +14,7 @@ $(function() {
 
   var buildImage = function(url) {
     var html= `<div class='pfofiel__item'> 
-                  <div class=' item-image__content'>
+                  <div class='item-image__content'>
                     <div class='item-image__content--icon'>
                       <img src="${url}" width="150" height="150" >
                     </div>
@@ -50,4 +50,9 @@ $(function() {
     addpfofiel()
   });
 
+  //  show.html.hamlにてフォロー、フォロー数をクリックした場合の非同期
+  // $('.following_user_show').on('click', function(e) {
+  //   e.preventDefault();
+  //   console.log('ok')
+  // }) 
 });

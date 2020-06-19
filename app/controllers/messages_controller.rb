@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @messages = Message.includes(:user).order('created_at DESC')
+    @messages = Message.includes(:user).order('created_at DESC').page(params[:page]).per(12)
     #@image = Image.message  #.includes(:message)
     @all_ranks = Message.find(Like.group(:message_id).order('count(message_id) desc').limit(10).count(:message_id).keys)
     @most_views = Message.order("impressions_count DESC").take(10)
