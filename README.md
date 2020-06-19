@@ -18,7 +18,6 @@
 - フォロワー機能
 
 ## DB設計
-## ユーザー登録機能
 ### usersテーブル
 
 |Column|Type|Options|
@@ -43,7 +42,7 @@
 - has_many :following, through: :active_relationships,  source: :followed
 - has_many :followers, through: :passive_relationships, source: :follower
 
-## 投稿機能
+
 ### messagesテーブル
 
 |Column|Type|Options|
@@ -60,7 +59,7 @@
 - has_many   :message_tags, dependent: :destroy
 - has_many   :tags,         through: :message_tags
 
-## 写真投稿機能
+
 ### imagesテーブル
 
 |Column|Type|Options|
@@ -71,7 +70,6 @@
 #### Association
 - belongs_to  :message,  optional: true
 
-## コメント機能
 ### commentsテーブル
 
 |Column|Type|Options|
@@ -84,7 +82,6 @@
 - belongs_to :user
 - belongs_to :message
 
-## お気に入り機能
 ### likesテーブル
 
 |Column|Type|Options|
@@ -96,7 +93,6 @@
 - belongs_to :user
 - belongs_to :message
 
-## フォロワー機能
 ### relationshipsテーブル
 
 |Column|Type|Options|
@@ -108,7 +104,6 @@
 - belongs_to :follower, class_name: "User"
 - belongs_to :followed, class_name: "User"
 
-## タグ機能
 ### relationshipsテーブル
 
 |Column|Type|Options|
@@ -119,7 +114,6 @@
 - has_many :message_tags
 - has_many :messages,  through: :message_tags
 
-## タグ機能
 ### relationshipsテーブル
 
 |Column|Type|Options|
