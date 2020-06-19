@@ -1,0 +1,9 @@
+.wrapper
+  = render "header"
+  = render "side_bar"
+  .main
+    .messages
+      .message__old
+        - @old_messages.each do |message|
+          = render message
+      = paginate(@old_messages)

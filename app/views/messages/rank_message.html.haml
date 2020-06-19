@@ -1,0 +1,8 @@
+.wrapper
+  = render "header"
+  = render "side_bar"
+  .main
+    .messages
+      .message__rank
+        - @all_ranks.each do |message|
+          = render message

@@ -61,18 +61,31 @@ $(function() {
       $('.other__choise').css("display", "none")
     }
   })
-  $('.message__btn__rank').on('click', function(e) {
-    e.preventDefault();
-    $('.pagination').css("display", "none");
-    $('.message').css("display", "none");
-    $('.message__rank').css("display", "inline");
-  })
-  $('.message__btn__normal').on('click', function(e) {
-    e.preventDefault();
-    $('.pagination').css("display", "block");
-    $('.message').css("display", "none");
-    $('.message__normal').css("display", "inline");
-  })
+
+   // 新着順をクリックした場合
+  // $('.list_tag__new').on('click', function(e) {
+  //   e.preventDefault();
+  //   $('.message__old').css("display", "none");
+  //   $('.message__rank').css("display", "none");
+  //   $('.message__normal').css("display", "flex");
+  // })
+
+  // 古い順をクリック
+  // $('.list_tag__old').on('click', function(e) {
+  //   e.preventDefault();
+  //   $('.message__normal').css("display", "none");
+  //   $('.message__rank').css("display", "none");
+  //   $('.message__old').css("display", "flex");
+  //    // $('.pagination').css("display", "none");
+  // })
+
+   // いいねをクリックした場合
+  //  $('.list_tag__rank').on('click', function(e) {
+  //   e.preventDefault();
+  //   $('.message__normal').css("display", "none");
+  //   $('.message__old').css("display", "none");
+  //   $('.message__rank').css("display", "flex");
+  // })
 
   // $('.group__data').on('click', function(e) {
   //   e.preventDefault();
