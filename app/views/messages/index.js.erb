@@ -1,0 +1,20 @@
+<%- @list_tags.each do |tag| %> 
+  <div class="message.message__rank" >
+    <div class="message__content">
+      <%= link_to message_path(@message.id) %>
+        <%- %>
+    </div>
+  </div>
+            = link_to  message_path(message.id) do
+              - message.images.first(1).each do |image|
+                = image_tag image.image.thumb.url, height: "100%", width: "100%"
+          .message__content__content
+            %p#text
+              = message.content
+
+$(".messages").html("<%= j(render group) ) %>")
+
+
+<% $("#link-<%= @message.id %>").html("<%= j(render partial: 'likes/like', locals: { message: @message, likes: @likes, like: @like }) %>"); %>
+<% $(".user__p").html("<%= escape_javascript(render('users/unfollow')) %>"); %>
+<% $("#follwers").html('<%= @user.followers.count'); %>

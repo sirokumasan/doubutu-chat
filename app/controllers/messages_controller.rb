@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
+  before_action :move_to_index, except: [:index, :show]
+
   def index
-    @messages = Message.includes(:user)
+    @messages = Message.includes(:user).order('created_at DESC').page(params[:page]).per(12)
     #@image = Image.message  #.includes(:message)
     @all_ranks = Message.find(Like.group(:message_id).order('count(message_id) desc').limit(10).count(:message_id).keys)
     @most_views = Message.order("impressions_count DESC").take(10)
@@ -71,6 +73,10 @@ class MessagesController < ApplicationController
     def message_params
       params.require(:message).permit(:content, :tag_ids, images_attributes: [:image, :_destroy, :id, :tags]).merge(user_id: current_user.id)
       # params.require(:product).permit(:name, images_attributes: [:image, :id]).merge(user_id: current_user.id)
+    end
+
+    def move_to_index
+      redirect_to action: :index unless logged_in?
     end
     
 end  

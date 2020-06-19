@@ -1,10 +1,11 @@
 - if @user ||= current_user
   .stata
-    =link_to following_user_path(@user) do
+    =link_to following_user_path(@user), class: "following_user_show"  do
       .stat#following
         = @user.following.count
       フォロー
-    =link_to followers_user_path(@user) do
+    =link_to followers_user_path(@user), class: "followers_user_show" do
+      -# = form_for(followers_user_path(@user),method: :get, remoto: true) do |f|
       .stat#follwers
         = @user.followers.count 
       フォロー数

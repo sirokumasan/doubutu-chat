@@ -4,10 +4,16 @@
   -#     =link_to "犬", "#"
   .group
     -# - binding.pry
+    -# -@list_tags.each do |tag|
+    -#   .group_type
+    -#     .group__data{data: {name: tag.tag_name}, remote: true}
+    -#       =tag.tag_name
+    -#     = "(#{tag.message_tags.count})"
     -@list_tags.each do |tag|
       .group_type
-        =tag.tag_name
-        ="(#{tag.message_tags.count})"
+        .group__data{data: {name: tag.tag_name}}
+          = link_to tag.tag_name, tags_path(tag.tag_name)  #, remote: true
+        = "(#{tag.message_tags.count})"
   - @all_ranks.each do |message|
     = message.id
   - @most_views.each do |message|

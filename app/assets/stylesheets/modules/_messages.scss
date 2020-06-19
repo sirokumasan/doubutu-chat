@@ -24,12 +24,13 @@
   .messages {
     width: 95%;
     background-color: skyblue;
-    margin: 10px auto;
+    margin: 30px auto;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-around;
     flex-wrap: wrap;
     .message {
-      width: 23%;
+      width: 25%;
+      padding-right: 10px;
       height: 250px;
       background-color: yellow;
       margin-bottom: 10px;
@@ -59,6 +60,12 @@
       }
     }
   }
+  .pagination {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 20px;
+  }
 }
 .relative {
   position: relative;
@@ -69,7 +76,6 @@
   z-index:1000;
   background:#f8f9fa !important;
   position:absolute;
-  // left:0;
   top:35px;
   width:150px;
   padding:0px 20px;
@@ -91,6 +97,26 @@
   display:block;
 }
 
+.message__tab {
+  display: inline-block;
+  margin: 20px 0px 0px 20px;
+  border: 3px solid;
+  cursor: pointer;
+  // color: red;
+}
+
+.message__rank {
+  display: none;
+}
+
+.message__type {
+  display: none;
+}
+
+.group__data {
+  display: inline-block;
+  cursor: pointer;
+}
 // .link {
 //   // display: none;
 // }

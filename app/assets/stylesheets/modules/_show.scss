@@ -1,7 +1,7 @@
 .show {
   // height: 600px;
   width: 50%;
-  background-color: skyblue;
+  background-color: #66CCCC;
   margin: 30px auto;
   position: relative;
   .more {
@@ -46,29 +46,51 @@
     }
   }
   &__image {
-    height: 400px;
+    height: 60vh;
     width: 100%;
     // background-color: green;
   }
   &__user {
-    &__name {
-      float: right;
+    width: 100%;
+    height: 80px;
+    .like {
+      float: left;
     }
-    &__time {
+    &__info {
       float: right;
-    }
+      &__name {
+        font-size: 20px;
+        text-align: right;
+        // float: right;
+        // display: block;
+      }
+      &__time {
+        // float: right;
+        // display: block;
+      }
+    } 
   }
   &__message {
     height: 150px;
     width: 100%;
+    border: 2px solid;
+    background-color: #EEEEEE;
     overflow: scroll;
-    background-color: yellow;
+    // &__content {
+    //   width: 80%;
+    //   height: 100%;
+    //   margin: 0 auto;
+    //   background-color: #EEEEEE;
+      
+    // }
   }
   &__comment {
-    margin-top: 50px;
-    background-color: red;
+    // margin-top: 50px;
+    // background-color: red;
+    padding-top: 20px;
     width: 100%;
     height: 120px;
+     background-color: #EEEEEE;
     &__text {
       width: 70%;
       height: 70px;
@@ -87,11 +109,13 @@
     text-align: center;
   }
   &__comments {
+    padding-top: 20px;
     width: 100%;
     height: 300px;
     overflow: scroll;
-    // background-color: steelblue;
+    background-color: #EEEEEE;
     &__comment {
+      // border: 2px solid;
       padding-left: 60px;
       display: inline-block;
       &__name {
@@ -118,3 +142,12 @@
   display: none;
 }
 
+.slick-track {
+  width: 100%;
+  height: 100%;
+}
+
+.slick-list {
+  width: 100%;
+  height: 100%;
+}
