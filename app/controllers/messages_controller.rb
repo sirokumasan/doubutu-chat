@@ -3,7 +3,8 @@ class MessagesController < ApplicationController
 
   def index
     @messages = Message.includes(:user).order('created_at DESC').page(params[:page]).per(12)
-    @list_tags = Tag.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
+    @list_tags = nil
+    # @list_tags = Tag.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
     # @most_views = Message.order("impressions_count DESC").take(10)
   end
   
