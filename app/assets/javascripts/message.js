@@ -2,7 +2,7 @@ $(function() {
 
   var buildImage = function(url, i) {
     var t = i + 1
-    var html  = `<div class='item-image'> 
+    var html  = `<div class="item-image"> 
                   <div class='item-image__content'>
                     <div class='item-image__content--icon'>
                       <img src="${url}" width="110" height="100" >
