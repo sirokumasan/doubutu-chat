@@ -52,3 +52,9 @@ production:
   database: doubutu-chat_production
   username: doubutu-chat
   password: <%= ENV['DOUBUTU-CHAT_DATABASE_PASSWORD'] %>
+
+production:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
