@@ -2,7 +2,9 @@
   width: 100%;
   height: 100vh;
   margin: 0 auto;
-  margin-top: 70px;
+  // margin-top: 70px;
+  background-color: #FDF5E6;
+  padding-top: 70px;
 }
 
 .user__profiel {
@@ -12,6 +14,7 @@
   position: relative;
   &__image {
     border: 2px solid black;
+    background-color: #ffffff;
     height: 70%;
     width: 50%;
     display: inline-block;
@@ -53,6 +56,9 @@
         text-decoration: none;
         color: black;
       }
+    }
+    &--follow {
+      margin-top: 10px;
     } 
   }
   &__follow {
@@ -62,7 +68,7 @@
 }
 
 .user_show__image {
-  width: 60%;
+  width: 50%;
   height: 80%;
   overflow: scroll;
   // padding-left: 20px;
@@ -73,6 +79,7 @@
     width: 50%;
     margin: 0 auto;
     border: 2px solid black;
+    background-color: #ffffff;
     a {
       text-decoration: none;
       .noimage {
@@ -86,13 +93,17 @@
   }
   &__content {
     float: right;
-    background-color: skyblue;
+    background-color: #ffffff;
+    // background-color: skyblue;
     height: 100%;
     width: 50%;
+    font-size: 2vh;
     &--text {
-      height: 60%;
+      height: 70%;
       background-color: snow;
       text-overflow: ellipsis;
+      border-bottom: 2px solid black;
+      padding: 0px 5px;
       // overflow: scroll;
     }
     &--time {
