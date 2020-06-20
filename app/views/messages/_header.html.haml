@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  =link_to " Navbar", root_path, class: "navbar-brand"
+  =link_to " Home", root_path, class: "navbar-brand"
   %button.navbar-toggler{"aria-controls" => "navbarTogglerDemo02", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarTogglerDemo02", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarTogglerDemo02.collapse.navbar-collapse
@@ -9,11 +9,11 @@
           =current_user.name   
           %ul.dropdown
             %li
-              = link_to "ログアウト", logout_path, method: :delete, class:"hiddon"
-            %li
               = link_to "マイページ", user_path(current_user), class: "hiddon"
             %li
               = link_to "投稿", new_message_path, class: "hiddon" 
+            %li
+              = link_to "ログアウト", logout_path, method: :delete, class:"hiddon"
         - else
           USER
           %ul.dropdown
@@ -22,10 +22,10 @@
             %li
               = link_to "ログイン", login_path, class:"hiddon"
         -# %span.sr-only (current) 
-      %li.nav-item
-        = link_to "Link", "#", class:"nav-link"
-      %li.nav-item
-        = link_to "Disabled", "#", class: "nav-link disabled"
+      -# %li.nav-item
+      -#   = link_to "Link", "#", class:"nav-link"
+      -# %li.nav-item
+      -#   = link_to "Disabled", "#", class: "nav-link disabled"
     %form.form-inline.my-2.my-lg-0
       %input.form-control.mr-sm-2{:placeholder => "Search", :type => "search"}/
       %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search

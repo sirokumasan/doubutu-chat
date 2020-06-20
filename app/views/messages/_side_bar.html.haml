@@ -1,21 +1,39 @@
 .groups
-  -# .group
-  -#   .group_type
-  -#     =link_to "犬", "#"
   .group
-    -# - binding.pry
-    -# -@list_tags.each do |tag|
-    -#   .group_type
-    -#     .group__data{data: {name: tag.tag_name}, remote: true}
-    -#       =tag.tag_name
-    -#     = "(#{tag.message_tags.count})"
-    -@list_tags.each do |tag|
-      .group_type
-        .group__data{data: {name: tag.tag_name}}
-          = link_to tag.tag_name, tags_path(tag.tag_name)  #, remote: true
-        = "(#{tag.message_tags.count})"
-  - @all_ranks.each do |message|
-    = message.id
-  - @most_views.each do |message|
-    = message.id
+    .list_tag
+      %ul
+        %h5 動物一覧
+        -# = @list_tags.count
+        - @list_tags.each do |tag|
+          .group_type
+            .group__data{data: {name: tag.tag_name}}
+              %li
+                = link_to "#{tag.tag_name}", tags_path(tag.tag_name)  #, remote: true
+            = "(#{tag.message_tags.count})"
+    .list_tag
+      %ul
+        %h5 並び替え
+        %li
+          .list_tag__new
+            = link_to "新着順", root_path
+        %li 
+          .list_tag__old
+            = link_to "古い順", old_message_messages_path
+            
+        %li
+          .list_tag__rank
+            = link_to "いいねが多い順", rank_message_messages_path
+            
+        
+  -# .sorting
+   
+  -#  
+  -# .message__tab.message__btn__normal
+  -#   新着順
+  -# .message__tab.message__btn__rank
+  -#   お気に入り順
+  -# - @all_ranks.each do |message|
+  -#   = message.id
+  -# - @most_views.each do |message|
+  -#   = message.id
     

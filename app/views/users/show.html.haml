@@ -35,22 +35,22 @@
           .user_show__image__content
             .user_show__image__content--text
               =message.content
-            - if logged_in? #&& current_user = nil
-              .like{ id: "link-#{message.id}"}
-                = render partial: "likes/like", locals: {message: message}
+            -# - if logged_in?
+            -#   .like{ id: "link-#{message.id}"}
+            -#     = render partial: "likes/like", locals: {message: message}
             .user_show__image__content--time
               = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
 
-  .user_show__image.user_show__follwing
-    - @users.each do |user|
-      .user_show__image__posts
-        .user_show__image__post
-          = link_to  user_path(user.id) do
-            - if user.pfofiel.presence
-              = image_tag user.pfofiel.url, {class: "show__image__tag" , height: "100%" ,width: "100%"}
-            - else 
-              %P.noimage NO IMAGE
-        .user_show__image__content
-          .user_show__image__content--text
-            = user.name
-          .user__profiel__content--follow
+  -# .user_show__image.user_show__follwing
+  -#   - @users.each do |user|
+  -#     .user_show__image__posts
+  -#       .user_show__image__post
+  -#         = link_to  user_path(user.id) do
+  -#           - if user.pfofiel.presence
+  -#             = image_tag user.pfofiel.url, {class: "show__image__tag" , height: "100%" ,width: "100%"}
+  -#           - else 
+  -#             %P.noimage NO IMAGE
+  -#       .user_show__image__content
+  -#         .user_show__image__content--text
+  -#           = user.name
+  -#         .user__profiel__content--follow

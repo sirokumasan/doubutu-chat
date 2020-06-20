@@ -1,8 +1,13 @@
+.message_show {
+  background-color: #FDF5E6;
+  padding: 30px 0px;
+}
+
 .show {
   // height: 600px;
   width: 50%;
-  background-color: #66CCCC;
-  margin: 30px auto;
+  background-color: #ffffff;
+  margin: 0 auto;
   position: relative;
   .more {
     position: absolute;
@@ -11,7 +16,6 @@
     top: 20px;
     right: 30px;
     z-index: 999;
-    // background-color: gray;
     height: 100px;
     width: 80px;
     text-align: right;
@@ -50,47 +54,40 @@
     width: 100%;
     // background-color: green;
   }
-  &__user {
-    width: 100%;
-    height: 80px;
-    .like {
-      float: left;
-    }
-    &__info {
-      float: right;
-      &__name {
-        font-size: 20px;
-        text-align: right;
-        // float: right;
-        // display: block;
-      }
-      &__time {
-        // float: right;
-        // display: block;
-      }
-    } 
-  }
   &__message {
     height: 150px;
     width: 100%;
     border: 2px solid;
-    background-color: #EEEEEE;
-    overflow: scroll;
-    // &__content {
-    //   width: 80%;
-    //   height: 100%;
-    //   margin: 0 auto;
-    //   background-color: #EEEEEE;
-      
-    // }
+    background-color: #ffffff;
+    padding: 10px;
+    position: relative;
+    // overflow: scroll;
+    &__user {
+      // width: 100%;
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      &__info {
+        float: right;
+        &__name {
+          font-size: 20px;
+          text-align: right;
+        }
+      } 
+    }
+  }
+  .like {
+    margin-top: 10px;
   }
   &__comment {
     // margin-top: 50px;
     // background-color: red;
-    padding-top: 20px;
+    // padding-top: 20px;
+    margin-top: 20px;
     width: 100%;
     height: 120px;
-     background-color: #EEEEEE;
+    background-color: #ffffff;
+    //  background-color: #EEEEEE;
     &__text {
       width: 70%;
       height: 70px;
@@ -113,7 +110,8 @@
     width: 100%;
     height: 300px;
     overflow: scroll;
-    background-color: #EEEEEE;
+    background-color: #ffffff;
+    // background-color: #EEEEEE;
     &__comment {
       // border: 2px solid;
       padding-left: 60px;

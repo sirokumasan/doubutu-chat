@@ -1,0 +1,9 @@
+.message
+  .message__content
+    .message__content__image
+      = link_to  message_path(message.id) do
+        - message.images.first(1).each do |image|
+          = image_tag image.image.thumb.url, height: "100%", width: "100%"
+    .message__content__content
+      %p#text
+        = message.content

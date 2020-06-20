@@ -1,13 +1,21 @@
 class MessagesController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :old_messages, :show]
 
   def index
     @messages = Message.includes(:user).order('created_at DESC').page(params[:page]).per(12)
-    #@image = Image.message  #.includes(:message)
-    @all_ranks = Message.find(Like.group(:message_id).order('count(message_id) desc').limit(10).count(:message_id).keys)
-    @most_views = Message.order("impressions_count DESC").take(10)
     @list_tags = Tag.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
-  end 
+    # @most_views = Message.order("impressions_count DESC").take(10)
+  end
+  
+  def old_message
+    @list_tags = Tag.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
+    @old_messages = Message.includes(:user).order('created_at ASC').page(params[:page]).per(12)
+  end
+
+  def rank_message
+    @list_tags = Tag.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
+    @all_ranks = Message.find(Like.group(:message_id).order('count(message_id) desc').limit(10).count(:message_id).keys)
+  end
 
   def new
     @message = Message.new
