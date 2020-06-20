@@ -1,7 +1,6 @@
 $(function() {
 
   var buildImage = function(url, i) {
-    var index = [1,2,3,4,5,6,7,8,9,10];
     var t = i + 1
     var html  = `<div class='item-image'> 
                   <div class='item-image__content'>
