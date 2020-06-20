@@ -3,7 +3,7 @@
     .list_tag
       %ul
         %h5 動物一覧
-        - unless @list_tags.blank?
+        - if !@list_tags.blank?
           - @list_tags.each do |tag|
             .group_type
               .group__data{data: {name: tag.tag_name}}
