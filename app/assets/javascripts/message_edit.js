@@ -3,16 +3,16 @@ $(function() {
   var buildEdit = function(url, i) {
     var index = [1,2,3,4,5,6,7,8,9,10];
     var t = i + 1
-    var html= `<div class='item-image'> 
-                <div class='item-image__content'>
-                  <div class='item-image__content--icon'>
-                    <img src="${url}" width="110" height="100" >
+    var html  = `<div class='item-image'> 
+                  <div class='item-image__content'>
+                    <div class='item-image__content--icon'>
+                      <img src="${url}" width="110" height="100" >
+                    </div>
                   </div>
-                </div>
-                <div class='item-image__operetion'>
-                  <div class='item-image__operetion--delete--edit' index="${i}">削除</div>
-                </div>
-              </div>`
+                  <div class='item-image__operetion'>
+                    <div class='item-image__operetion--delete--edit' index="${i}">削除</div>
+                  </div>
+                </div>`
     $('#image-box__edit').append(html);
     $('.fas').prepend(`<input class="file-field" type="file" name="message[images_attributes][${t}][image]" id="message_images_attributes_${t}_image" >`)
     // $(`#message_images_attributes_${t}_image`).css('display', 'none')
