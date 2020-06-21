@@ -1,34 +1,37 @@
-= render "header"
+.message__new
+  = render "header"
 
-%p.post__title 投稿する
-= form_for @message do |f|
-  .new-wrapper
-    .new-wrapper__main
-      .new-wrapper__main__post
-        #image-box
-          %label{class: "flexbox", action: request.path}
-            .new-wrapper__main__image
-              %i{class: "fas fa-camera"}
-            -#   .new-wrapper__main__image-field__text
-            -#     ドラッグアンドドロップ
-            -#     %br  name: "message[imeges_attributes][][image]"
-            -#     またはクリックしてファイルをアップロード
-            = f.fields_for :images do |i|
-              = i.file_field :image, {class: "file-field", type: "file"}
-            -# = f.fields_for :images do |i|
-            -#   = i.file_field :image, {class: "file-field", type: "file"}
-          .new-wrapper__main__title
-            投稿画像
-      .new-wrapper__main__content
-        = f.text_area :content, {class: "new-wrapper__main__content--text", placeholder: "文字を入力してください" }
-        -# = f.text_area :content, {class: "new-wrapper__main__input-textarea", placeholder: "商品の説明(必須 1,000文字以内)\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
-      .new-wrapper__main__tag
-        Type:
-        = f.collection_select :tag_ids, Tag.all, :id, :tag_name  
-        %br
-        = f.fields_for :tag do |i|
-          = i.text_field :tag_name, {class: "other__choise", placeholder: "何か種類があれば入力してください" }
-      .new-wrapper__main__submit
-        = f.submit "送信する", {class:"new-wrapper__main__submit--btn"}
+  .message__new__post
+    %p.post__title 投稿する
+
+    = form_for @message do |f|
+      .new-wrapper
+        .new-wrapper__main
+          .new-wrapper__main__post
+            #image-box
+              %label{class: "flexbox", action: request.path}
+                .new-wrapper__main__image
+                  %i{class: "fas fa-camera"}
+                    -#   .new-wrapper__main__image-field__text
+                    -#     ドラッグアンドドロップ
+                    -#     %br  name: "message[imeges_attributes][][image]"
+                    -#     またはクリックしてファイルをアップロード
+                    = f.fields_for :images do |i|
+                      = i.file_field :image, {class: "file-field", type: "file"}
+                -# = f.fields_for :images do |i|
+                -#   = i.file_field :image, {class: "file-field", type: "file"}
+              .new-wrapper__main__title
+                投稿画像
+          .new-wrapper__main__content
+            = f.text_area :content, {class: "new-wrapper__main__content--text", placeholder: "文字を入力してください" }
+            -# = f.text_area :content, {class: "new-wrapper__main__input-textarea", placeholder: "商品の説明(必須 1,000文字以内)\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+          .new-wrapper__main__tag
+            Type:
+            = f.collection_select :tag_ids, Tag.all, :id, :tag_name  
+            %br
+            = f.fields_for :tag do |i|
+              = i.text_field :tag_name, {class: "other__choise", placeholder: "何か種類があれば入力してください" }
+          .new-wrapper__main__submit
+            = f.submit "送信する", {class:"new-wrapper__main__submit--btn"}
 
 
