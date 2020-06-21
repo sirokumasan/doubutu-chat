@@ -6,7 +6,7 @@
 ユーザーをフォローしたりもできます。
 
 ## URL
-https://doubutu.herokuapp.com
+https://doubutu.herokuapp.com  
 6/22日(月)に更新します.  
 申し訳ございませんがもうしばらくお待ちください.  
 【テストユーザー】など作ります。
