@@ -61,6 +61,7 @@ class MessagesController < ApplicationController
     # binding.pry
     @message = Message.find(params[:id])
     if  @message.update(message_params)
+      # binding.pry
       redirect_to root_path
     else  
       render :new

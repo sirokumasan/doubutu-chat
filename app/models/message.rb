@@ -9,7 +9,7 @@ class Message < ApplicationRecord
   
   accepts_nested_attributes_for :images, allow_destroy: true
   accepts_nested_attributes_for :tags,   allow_destroy: true
-  validates :content, presence: true
+  validates :content, presence: true, length: {maximum: 40} 
   is_impressionable counter_cache: true
 
   def like_user(user_id)
