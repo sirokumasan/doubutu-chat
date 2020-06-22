@@ -62,6 +62,7 @@ gem 'font-awesome-sass'
 gem 'redis'
 gem 'impressionist', '~>1.6.1'
 gem 'kaminari'
+gem 'fog-aws'
 
 group :production do
   gem 'pg'
