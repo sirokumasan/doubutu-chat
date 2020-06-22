@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
   end
   
   def old_message
-    @list_tags = Tag.unscoped.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
+    @list_tags = Tag.unscoped.joins(:message_tags).group(:id, :tag_id).order('count(tag_id) DESC')
     @old_messages = Message.includes(:user).order('created_at ASC').page(params[:page]).per(12)
   end
 
