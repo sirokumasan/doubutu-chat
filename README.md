@@ -7,6 +7,8 @@
 
 ## URL
 https://doubutu.herokuapp.com  
+test@test.com
+1111111t
 6/22日(月)に更新します.  
 申し訳ございませんがもうしばらくお待ちください.  
 【テストユーザー】など作ります。
