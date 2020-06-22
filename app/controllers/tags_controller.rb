@@ -9,7 +9,7 @@ class TagsController < ApplicationController
     #@image = Image.message  #.includes(:message)
     @all_ranks = Message.find(Like.group(:message_id).order('count(message_id) desc').limit(10).count(:message_id).keys)
     @most_views = Message.order("impressions_count DESC").take(10)
-    @list_tags = Tag.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
+    @list_tags = Tag.unscoped.joins(:message_tags).group(:id, :tag_id).order('count(tag_id) DESC')
 
   end
 

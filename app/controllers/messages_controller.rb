@@ -3,9 +3,9 @@ class MessagesController < ApplicationController
 
   def index
     @messages = Message.includes(:user).order('created_at DESC').page(params[:page]).per(12)
-    @list_tags = nil
-    # @list_tags = Tag.unscoped.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
-    # @list_tags = MessageTag.joins(:tags)#.group(:tag_id).order('count(tag_id) DESC')
+    # @list_tags = nil
+    @list_tags = Tag.unscoped.joins(:message_tags).group(:id, :tag_id).order('count(tag_id) DESC')
+    # @list_tags = Tag.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
     # @most_views = Message.order("impressions_count DESC").take(10)
     # @posts = Post.joins(:tags).where(tags: {title: params[:tag]})
   end
@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
   end
 
   def rank_message
-    @list_tags = Tag.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
+    @list_tags = Tag.unscoped.joins(:message_tags).group(:id, :tag_id).order('count(tag_id) DESC')
     @all_ranks = Message.find(Like.group(:message_id).order('count(message_id) desc').limit(10).count(:message_id).keys)
   end
 
