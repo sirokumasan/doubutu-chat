@@ -45,7 +45,7 @@ https://doubutu.herokuapp.com
 - フォロワー機能
 
 ## 実装機能一覧
-- ユーザー登録、ログイン、ログアウト機能(devise)
+- ユーザー登録、ログイン、ログアウト機能(session機能)
 - 投稿機能・編集機能・削除機能
 - 複数画像プレビュー機能(JavaScript, CarrierWave)
 - タグ付け機能/自分でタグ機能を作れます。
