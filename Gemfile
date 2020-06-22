@@ -63,6 +63,7 @@ gem 'redis'
 gem 'impressionist', '~>1.6.1'
 gem 'kaminari'
 gem 'fog-aws'
+gem 'dotenv-rails'
 
 group :production do
   gem 'pg'
