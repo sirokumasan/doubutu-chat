@@ -3,11 +3,9 @@ class MessagesController < ApplicationController
 
   def index
     @messages = Message.includes(:user).order('created_at DESC').page(params[:page]).per(12)
-    # @list_tags = nil
     @list_tags = Tag.unscoped.joins(:message_tags).group(:id, :tag_id).order('count(tag_id) DESC')
     # @list_tags = Tag.joins(:message_tags).group(:tag_id).order('count(tag_id) DESC')
     # @most_views = Message.order("impressions_count DESC").take(10)
-    # @posts = Post.joins(:tags).where(tags: {title: params[:tag]})
   end
   
   def old_message
@@ -23,24 +21,17 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     @message.images.new
-    # @message.images.build
   end 
 
   def create
-    # binding.pry
-    # @message = current_user.messages.build(message_params)
     @message = Message.new(message_params)
-    tag_list = params[:message][:tag][:tag_name].split(",")
-    # @message = @message.images.new(message_params)
-    # if Message.create(message_params)
-     
+    tag_list = params[:message][:tag][:tag_name].split(",")     
     if @message.valid?
        @message.save_messages(tag_list) if params[:message][:tag][:tag_name].presence
        @message.save
-    # if @message.save
-      redirect_to root_path
+       redirect_to root_path
     else  
-      # flash.now[:alert]= "投稿が失敗しました"
+      flash.now[:alert]= @message.errors.full_messages
       render :new
     end
   end
@@ -50,9 +41,7 @@ class MessagesController < ApplicationController
     @comment = Comment.new
     @comments = @message.comments.includes(:user).order("created_at DESC")
     @like = Like.new
-    #impressionist(@message, nil, :unique => [:session_hash])
     @page_views = @message.impressionist_count
-    #where("created_at <= ?", Time.now)
   end
 
   def edit
@@ -60,12 +49,11 @@ class MessagesController < ApplicationController
   end
 
   def update
-    # binding.pry
     @message = Message.find(params[:id])
     if  @message.update(message_params)
-      # binding.pry
       redirect_to root_path
     else  
+      flash.now[:alert]= @message.errors.full_messages
       render :new
     end
   end
@@ -84,7 +72,6 @@ class MessagesController < ApplicationController
 
     def message_params
       params.require(:message).permit(:content, :tag_ids, images_attributes: [:image, :_destroy, :id, :tags]).merge(user_id: current_user.id)
-      # params.require(:product).permit(:name, images_attributes: [:image, :id]).merge(user_id: current_user.id)
     end
 
     def move_to_index

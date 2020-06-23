@@ -3,7 +3,8 @@
     .account-page__inner--left.account-page__header
       %h2 Create Account
       %h5 新規アカウントの作成
-      -# = render "devise/shared/links"
+      = link_to "ログイン", login_path, class: 'btn'
+      = link_to "トップページ", root_path, class: 'btn'
     .account-page__inner--right.user-form
       = form_for @user do |f|
         = render 'shared/error_messages'

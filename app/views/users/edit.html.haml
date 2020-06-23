@@ -4,14 +4,15 @@
       %h2 Edit Account
       %h5 アカウントの編集
       = link_to "ログアウト", logout_path, method: "delete", class: 'btn'
-      = link_to "トップページに戻る", :back, class: 'btn'
+      = link_to "戻る", :back, class: 'btn'
     .account-page__inner--right.user-form
       = form_for @user do |f|
         .field#field__image
           .field-label
             %label{class: "flexbox", action: request.path}
               .field-label__image
-                - if(@user.pfofiel.presence)
+                - if !@user.pfofiel.file.nil?
+                  /-binding.pry
                   = f.file_field :pfofiel, {class: "file-field",id: "pfofiel__image", type: "file"}
                   .pfofiel__item
                     .item-image__content

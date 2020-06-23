@@ -19,7 +19,6 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash.now[:success] = "ようこそ" 
-      #flash[:success] = "Welcome to the Sample App!"
       redirect_to root_path
     else   
       render 'new'
@@ -36,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if  @user.update(user_params)
     redirect_to root_path
-    flash[:success] = "プロフィールを更新しました"
+    flash[:notice] = "プロフィールを更新しました"
     else  
       render 'edit'
     end

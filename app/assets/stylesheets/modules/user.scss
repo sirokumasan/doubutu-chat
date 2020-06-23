@@ -149,8 +149,8 @@
 
 #field__image {
   position: absolute;
-  top: 150px;
-  left: -350px;
+  top: 220px;
+  left: -380px;
 }
 
 
@@ -163,7 +163,8 @@
 
 .pfofiel {
   font-size: 25px;
-  margin-top: 30px;
+  margin-top: 15px;
+  margin-right: 10px;
 }
 
 .pfofiel__item--delete {
@@ -172,6 +173,9 @@
 
 .user-form {
   .new_user {
+    position: relative;
+  }
+  .edit_user {
     position: relative;
   }
 }
