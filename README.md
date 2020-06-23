@@ -42,7 +42,9 @@ https://doubutu.herokuapp.com
 削除機能と編集機能に飛べます。  
 ![demo](https://gyazo.com/4003e7eafab1113adc3169e1b5a93378/raw)  
 
-- フォロワー機能
+- フォロワー機能  
+マイページにてフォロワー機能を非同期通信で実装しました。
+![demo](https://gyazo.com/998abd98f7da2cca97474160aaa8ca15/raw) 
 
 ## 実装機能一覧
 - ユーザー登録、ログイン、ログアウト機能(session機能)
