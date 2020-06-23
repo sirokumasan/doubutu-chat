@@ -11,6 +11,8 @@ class Message < ApplicationRecord
   accepts_nested_attributes_for :tags,   allow_destroy: true
   validates :content, presence: true, length: {maximum: 40} 
   is_impressionable counter_cache: true
+  validates_associated :images
+  validates :images, presence: true
 
   def like_user(user_id)
     likes.find_by(user_id: user_id)
@@ -21,9 +23,7 @@ class Message < ApplicationRecord
   end
 
   def save_messages(tag)
-    #binding.pry
     current_tag = Tag.pluck(:tag_name) unless self.tags.nil?
-    #binding.pry
     old_tag = current_tag - tag
     new_tag = tag - current_tag
 
@@ -35,7 +35,6 @@ class Message < ApplicationRecord
       message_tag = Tag.find_or_create_by(tag_name: new_name )
       self.tags << message_tag
     end
-    #redirect_to root_path
   end
 
 end

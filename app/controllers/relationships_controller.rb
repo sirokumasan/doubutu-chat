@@ -9,7 +9,6 @@ class RelationshipsController < ApplicationController
       format.html {redirect_to @user}
       format.js
     end
-    #binding.pry
   end
 
   # delete/relationships/:id
@@ -20,7 +19,6 @@ class RelationshipsController < ApplicationController
       format.html {redirect_to @user}
       format.js
     end
-    #binding.pry
   end
 
 end
